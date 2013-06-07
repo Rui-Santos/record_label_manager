@@ -1,0 +1,32 @@
+« <%= link_to 'Bands', bands_path %>
+ « <%= link_to @track.album.band.name, band_path(@track.album.band) %>
+ « <i><%= link_to @track.album.name, album_path(@track.album) %></i> 
+
+
+<h1>“<%= @track.name %>”</h1>
+
+<h3>Details:</h3>
+  [<a href='<%= edit_track_url %>'>edit</a>]
+  <ul>
+    <!-- Band -->
+    <li>Band: 
+      <a href='<%= band_url(@track.album.band) %>'>
+        <%= @track.album.band.name %>
+      </a>
+    </li>
+
+    <!-- Album -->
+    <li>Album: 
+      <a href='<%= album_url(@track.album) %>'>
+        <i><%= @track.album.name %></i>
+      </a>
+    </li>
+
+    <!-- Lyrics -->
+    <li>Lyrics: 
+      <%= @track.lyrics %>
+    </li>
+
+  </ul>
+
+<%= button_to "Delete track", track_path(@track), method: :delete %>

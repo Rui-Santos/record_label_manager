@@ -1,0 +1,59 @@
+<h1>Create Track</h1>
+
+<form action='<%= tracks_url %>' method='post'>
+
+  <!-- Track title text -->
+  <label for='track_name'>Track name:</label>
+  <input type='text' name='track[name]' id='track_name'>
+  
+  <br />
+
+  <!-- Song title select -->
+  <label for='track_song_id'>Song title (if cover):</label>
+  <select name='track[song_id]' id='track_song_id'>
+  <% @songs.each do |song| %>
+    <option value='<%= song.id %>'>
+      <%= "“#{song.title}”" %>
+    </option>
+  <% end %>
+  </select>
+  
+  <br />
+
+  <!-- Album select -->
+  <label for='track_album_id' >Album:</label>
+  <select name='track[album_id]' id='track_album_id'>
+  <% @albums.each do |album| %>
+    <option value='<%= album.id %>'>
+      <%= "#{album.band.name}, '#{album.name}'" %>
+    </option>
+  <% end %>
+  </select>
+  
+  <br />
+
+  <!-- Bonus track checkbox -->
+  <label for='track_bonus_track'>Bonus track?</label>
+  <input 
+    type='hidden' 
+    name='track[bonus_track]' 
+    id='track_bonus_track_false'
+    value='0'
+  >
+  <input 
+    type='checkbox' 
+    name='track[bonus_track]' 
+    id='track_bonus_track_true'
+    value='1'
+  >
+  
+  <br />
+
+  <!-- Lyrics textarea -->
+  <label for='track_lyrics'>Lyrics:</label>
+  <textarea name='track[lyrics]' id='track_lyrics'></textarea>
+  
+  <br />
+
+  <input type='submit' value='Submit'>
+</form>

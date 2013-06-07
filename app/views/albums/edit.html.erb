@@ -1,0 +1,9 @@
+<h1>Edit Album</h1>
+
+<!-- What's the best way to prepopulate fields? -->
+<!-- The AlbumsController could send this view an instance variable -->
+<!-- e.g. @album -->
+<!-- and the _form partial could set the value attributes...-->
+<!-- But what would happen when the :new view rendered it? -->
+
+<%= render :partial => 'form', locals: { method: :put, album: @album } %>

@@ -1,0 +1,54 @@
+<!-- Set local variables -->
+
+<% action_path = (method == :post) ? albums_path : album_path %>
+
+<!-- The form -->
+
+<%= form_tag(action_path, :method => method) %>
+
+  <!-- 'Album name' text field  -->
+
+  <label for='album_name'>Album name:</label>
+  <input type='text' name='album[name]' id='album_name' 
+    value='<%= album.name %>'>
+  
+  <br />
+
+  <!-- 'Band name' select -->
+
+  <label for='album_band_id' >Band:</label>
+  <select name='album[band_id]' id='album_band_id'>
+
+    <% @bands.each do |band| %>
+      <option value='<%= band.id %>' <%= 'selected' if band.id == album.band_id %>>
+        <%= band.name %>
+      </option>
+    <% end %>
+
+  </select>
+  
+  <br />
+
+  <!-- 'Recording type' radio -->
+
+  <label>Recording type:</label>
+  <div>
+    <% @recording_types.each do |recording_type| %>
+      <% id = "album_recording_type_#{recording_type}" %>
+
+      <input 
+        type='radio' 
+        name='album[recording_type]' 
+        id='<%= id %>'
+        value='<%= recording_type %>'
+        <%= 'checked' if recording_type == album.recording_type %>
+      >
+      <label for='<%= id %>'>
+        <%= recording_type %>
+      </label>
+
+    <% end %>
+  </div>
+
+  <input type='submit' value='Submit'>
+</form>
