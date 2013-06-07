@@ -29,4 +29,20 @@
 
   </ul>
 
+<h3>Notes:</h3>
+
+  <!-- List notes -->
+  <ul>
+    <% @track.notes.each do |note| %>
+    <li>
+        <%= render partial: 'notes/note', object: note %> 
+    </li>
+    <% end %>
+
+  </ul>
+
+  <!-- New note form -->
+  <%= render partial: 'notes/form', locals: { track: @track } %>
+
+<!-- Delete track -->
 <%= button_to "Delete track", track_path(@track), method: :delete %>

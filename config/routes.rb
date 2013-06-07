@@ -1,37 +1,13 @@
 RecordLabelManager::Application.routes.draw do
-  # get "songs/new"
-  # get "songs/create"
-  # get "songs/index"
-  # get "songs/show"
-  # get "songs/edit"
-  # get "songs/update"
-  # get "songs/destroy"
-  # get "tracks/new"
-  # get "tracks/create"
-  # get "tracks/update"
-  # get "tracks/edit"
-  # get "tracks/destroy"
-  # get "tracks/index"
-  # get "tracks/show"
-  # get "albums/new"
-  # get "albums/create"
-  # get "albums/update"
-  # get "albums/edit"
-  # get "albums/destroy"
-  # get "albums/index"
-  # get "albums/show"
-  # get "bands/new"
-  # get "bands/create"
-  # get "bands/update"
-  # get "bands/edit"
-  # get "bands/destroy"
-  # get "bands/index"
-  # get "bands/show"
 
   resources :bands
   resources :albums
   resources :tracks
   resources :songs
+  resources :notes, only: [:create, :destroy]
+
+  resource :session, only: [:new, :create, :destroy]
+  resources :users
 
 end
 
